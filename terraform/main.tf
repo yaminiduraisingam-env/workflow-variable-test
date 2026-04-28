@@ -104,9 +104,9 @@ resource "env0_environment" "workflow_approach_a" {
 #
 # Comment this block out to let Approach A run cleanly and prove it works.
 
-resource "env0_configuration_variable" "vpc_cidr_scoped" {
-  name                  = "VPC_CIDR_SCOPED"
-  value                 = "10.0.0.0/16"
-  template_id           = env0_template.workflow.id
-  sub_environment_alias = "vpc"   # ← expected to cause plan failure
-}
+#resource "env0_configuration_variable" "vpc_cidr_scoped" {
+  #name                  = "VPC_CIDR_SCOPED"
+  #value                 = "10.0.0.0/16"
+  #template_id           = env0_template.workflow.id
+  #sub_environment_alias = "vpc"   # ← expected to cause plan failure
+#}
