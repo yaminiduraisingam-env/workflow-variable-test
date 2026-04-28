@@ -1,0 +1,26 @@
+# env0 Workflow Definition
+# Defines two sub-environments: 'vpc' and 'app'.
+# 'app' depends on 'vpc' (deploys after vpc succeeds).
+#
+# Both sub-environments use env0's public hello-world template
+# as a simple placeholder - the focus of this test is variable scoping,
+# not what the sub-environments actually deploy.
+
+environments:
+  vpc:
+    name: 'VPC Layer'
+    vcs:
+      type: 'terraform'
+      terraformVersion: '1.5.7'
+      repository: 'https://github.com/env0/templates'
+      path: 'aws/hello-world'
+
+  app:
+    name: 'App Layer'
+    vcs:
+      type: 'terraform'
+      terraformVersion: '1.5.7'
+      repository: 'https://github.com/env0/templates'
+      path: 'aws/hello-world'
+    needs:
+      - vpc
