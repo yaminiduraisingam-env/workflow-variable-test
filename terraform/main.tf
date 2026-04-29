@@ -38,10 +38,12 @@ resource "env0_template" "workflow" {
   repository  = var.repo_url
   path        = ""      # env0.workflow.yml is at the repo root
   revision    = "main"
-
-  project_ids = [env0_project.test.id]
 }
 
+resource "env0_template_project_assignment" "workflow_assignment" {
+  template_id = env0_template.workflow.id
+  project_id  = env0_project.test.id
+}
 
 # ── 3. Shared template-level variable ✅ (always worked) ─────────────────────
 # Scoped to the whole workflow template — both sub-environments inherit this.
